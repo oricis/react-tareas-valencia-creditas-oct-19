@@ -6,16 +6,14 @@ import generateID from '../services/generateID.js';
 class Tareas extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    const INITIAL = {
       newTaskText: '',
-      tasks: [
-        {
-          text: 'aprender react',
-          completed: false,
-          id: generateID(),
-        },
-      ],
+      tasks: [],
     };
+    this.state = JSON.parse(localStorage.getItem('TareasState')) || INITIAL;
+  }
+  saveToLocalStorage() {
+    localStorage.setItem('TareasState', JSON.stringify(this.state));
   }
   addTask(text) {
     text = text.trim();
@@ -29,7 +27,7 @@ class Tareas extends React.Component {
       this.setState({
         newTaskText: '',
         tasks: [...this.state.tasks, newTask],
-      });
+      }, this.saveToLocalStorage);
     }
   }
   handleKeyPress = event => {
