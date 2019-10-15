@@ -1,0 +1,12 @@
+.Tarea  {
+    font-size: 1.3em;
+    background: white;
+    border-radius: 10px;
+    margin:0.5em;
+    padding:1em;
+}
+.Tarea button {
+    border:none;
+    background: black;
+    color: white;
+}
