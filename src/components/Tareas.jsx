@@ -26,9 +26,16 @@ class Tareas extends React.Component {
 
       this.setState({
         newTaskText: '',
-        tasks: [...this.state.tasks, newTask],
+        tasks: [newTask,...this.state.tasks],
       }, this.saveToLocalStorage);
     }
+  }
+  toggleCompleteTask = (task) => {
+    task.completed = !task.completed;
+    this.setState({
+      tasks: this.state.tasks.map(item => item.id === task.id ? task : item)
+    })
+
   }
   handleKeyPress = event => {
     if (event.key === 'Enter') {
@@ -55,7 +62,11 @@ class Tareas extends React.Component {
         </section>
         <main className='taskList'>
           {this.state.tasks.map(task => (
-            <Tarea key={task.id} data={task} />
+            <Tarea
+              key={task.id}
+              data={task}
+              onComplete={this.toggleCompleteTask}
+            />
           ))}
         </main>
       </div>
