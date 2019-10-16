@@ -15,6 +15,17 @@ class Tareas extends React.Component {
   saveToLocalStorage() {
     localStorage.setItem('TareasState', JSON.stringify(this.state));
   }
+  mySetState = (update)=> {
+        this.setState(update, this.saveToLocalStorage)
+  }
+  deleteTask = id => {
+    this.mySetState(
+      {
+        tasks: this.state.tasks.filter(task => task.id !== id),
+      }
+
+    );
+  }
   addTask(text) {
     text = text.trim();
     if (text) {
@@ -24,10 +35,12 @@ class Tareas extends React.Component {
         id: generateID(),
       };
 
-      this.setState({
-        newTaskText: '',
-        tasks: [newTask,...this.state.tasks],
-      }, this.saveToLocalStorage);
+      this.mySetState(
+        {
+          newTaskText: '',
+          tasks: [newTask, ...this.state.tasks],
+        }
+      );
     }
   }
   toggleCompleteTask =  function (task)  {
@@ -69,6 +82,7 @@ class Tareas extends React.Component {
                 this.toggleCompleteTask
                 .bind(  this
               )}
+              onDelete={this.deleteTask}
             />
           ))}
         </main>
