@@ -1,13 +1,15 @@
 .Tarea {
   font-size: 1.3em;
   background: white;
-  border-radius: 10px;
+  border-radius: 15px;
   margin: 0.5em;
   padding: 1em;
-  width: 130px;
-  border-right-width: 10px;
-  border-right-style:solid;
-  border-right-color:transparent;
+  min-width: 150px;
+  border-width:2px;
+  border-right-width: 15px;
+  // border-bottom-width: 5px;
+  border-style:solid;
+  border-color:transparent;
  .actions {
      display:flex;
      flex-flow:column;

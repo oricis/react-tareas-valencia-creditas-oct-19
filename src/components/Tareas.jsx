@@ -75,9 +75,9 @@ class Tareas extends React.Component {
               this.setState({ newTaskText: event.target.value })
             }
           />
-          <button onClick={() => this.setState({ newTaskText: '' })}>
+          {/* <button onClick={() => this.setState({ newTaskText: '' })}>
             clean
-          </button>
+          </button> */}
         </section>
         <main className='taskList'>
           {this.state.tasks.map(task => (
