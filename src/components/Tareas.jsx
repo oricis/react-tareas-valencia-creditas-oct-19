@@ -30,7 +30,7 @@ class Tareas extends React.Component {
       }, this.saveToLocalStorage);
     }
   }
-  toggleCompleteTask = (task) => {
+  toggleCompleteTask =  function (task)  {
     task.completed = !task.completed;
     this.setState({
       tasks: this.state.tasks.map(item => item.id === task.id ? task : item)
@@ -65,7 +65,10 @@ class Tareas extends React.Component {
             <Tarea
               key={task.id}
               data={task}
-              onComplete={this.toggleCompleteTask}
+              onComplete={
+                this.toggleCompleteTask
+                .bind(  this
+              )}
             />
           ))}
         </main>

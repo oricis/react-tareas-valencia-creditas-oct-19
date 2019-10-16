@@ -1,0 +1,13 @@
+$primaryColor: tomato;
+
+
+.Counter {
+    background: $primaryColor;
+    .num {
+        background: #777;
+        &:hover {
+            color: yellow;
+        }
+    }
+
+}
