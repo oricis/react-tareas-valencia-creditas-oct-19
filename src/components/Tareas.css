@@ -1,5 +1,7 @@
 .Tareas {
     background: #ddd;
+    flex:1;
+    min-height: 100vh;
 
 }
 
