@@ -15,41 +15,47 @@ class Tareas extends React.Component {
   saveToLocalStorage() {
     localStorage.setItem('TareasState', JSON.stringify(this.state));
   }
-  mySetState = (update)=> {
-        this.setState(update, this.saveToLocalStorage)
-  }
+  setStateAndSave = update => {
+    this.setState(update, this.saveToLocalStorage);
+  };
   deleteTask = id => {
-    this.mySetState(
-      {
-        tasks: this.state.tasks.filter(task => task.id !== id),
-      }
-
-    );
-  }
+    this.setStateAndSave({
+      tasks: this.state.tasks.filter(task => task.id !== id),
+    });
+  };
   addTask(text) {
     text = text.trim();
     if (text) {
       const newTask = {
         text: text,
         completed: false,
+        color: '',
         id: generateID(),
       };
 
-      this.mySetState(
-        {
-          newTaskText: '',
-          tasks: [newTask, ...this.state.tasks],
-        }
-      );
+      this.setStateAndSave({
+        newTaskText: '',
+        tasks: [newTask, ...this.state.tasks],
+      });
     }
   }
-  toggleCompleteTask =  function (task)  {
+  toggleCompleteTask = function(task) {
     task.completed = !task.completed;
     this.setState({
-      tasks: this.state.tasks.map(item => item.id === task.id ? task : item)
-    })
+      tasks: this.state.tasks.map(item => (item.id === task.id ? task : item)),
+    });
+  };
+  changeTaskColor = (id, color) => {
+    this.setStateAndSave({
+      tasks: this.state.tasks.map(item => {
+        if (item.id === id) {
+          item.color = color;
+        }
 
-  }
+        return item;
+      }),
+    });
+  };
   handleKeyPress = event => {
     if (event.key === 'Enter') {
       this.addTask(this.state.newTaskText);
@@ -78,11 +84,9 @@ class Tareas extends React.Component {
             <Tarea
               key={task.id}
               data={task}
-              onComplete={
-                this.toggleCompleteTask
-                .bind(  this
-              )}
+              onComplete={this.toggleCompleteTask.bind(this)}
               onDelete={this.deleteTask}
+              onColorChange={this.changeTaskColor}
             />
           ))}
         </main>

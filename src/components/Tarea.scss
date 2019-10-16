@@ -1,0 +1,23 @@
+.Tarea {
+  font-size: 1.3em;
+  background: white;
+  border-radius: 10px;
+  margin: 0.5em;
+  padding: 1em;
+  width: 130px;
+  border-right-width: 10px;
+  border-right-style:solid;
+  border-right-color:transparent;
+
+  button {
+    border: none;
+    background: black;
+    color: white;
+  }
+
+  &.completed {
+    opacity: 0.6;
+    text-decoration: line-through;
+  }
+
+}
