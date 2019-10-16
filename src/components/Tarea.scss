@@ -8,16 +8,23 @@
   border-right-width: 10px;
   border-right-style:solid;
   border-right-color:transparent;
-
+ .actions {
+     display:flex;
+     flex-flow:column;
+     align-items: flex-start;
+ }
   button {
     border: none;
     background: black;
     color: white;
+    margin: 4px 0;
   }
 
   &.completed {
     opacity: 0.6;
-    text-decoration: line-through;
+    .text {
+        text-decoration: line-through;
+    }
   }
 
 }
