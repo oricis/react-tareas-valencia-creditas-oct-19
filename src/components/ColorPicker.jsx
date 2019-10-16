@@ -42,9 +42,11 @@ class ColorPicker extends React.Component {
                 justifyContent: 'center',
                 alignItems: 'center',
                 background: 'rgba(255,255,255,0.7)',
-                background: '#fffe',
+                background: this.props.color,
+
                 top: 0,
                 left: 0,
+                zIndex:99999
               }}
             >
               {this.colors.map(color => (

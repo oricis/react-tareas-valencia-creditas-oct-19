@@ -13,6 +13,7 @@ function Tarea(props) {
         <button onClick={() => props.onComplete(props.data)}>completar</button>
 
         <ColorPicker
+        color={props.data.color}
           onColorSelect={color => props.onColorChange(props.data.id, color)}
         >
           <button>color</button>
