@@ -1,3 +1,15 @@
+# React Task List
+
+***
+
+This App is a classroom example.
+
+Is possible to create tasks, mark them as completed or delete every task and change the task color.
+
+![alt text](https://user-images.githubusercontent.com/7187599/70702307-25b9dd80-1cce-11ea-8ceb-fde0c859a5f9.png "App running")
+
+***
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
